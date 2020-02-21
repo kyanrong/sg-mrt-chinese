@@ -2,9 +2,10 @@
   "name": "sg-mrt-chinese",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.js",
+  "main": "src/server.js",
   "scripts": {
-    "start:server": "tsc && node dist/server.js"
+    "start": "tsc && node dist/server.js",
+    "build:client": "parcel build src/index.html --out-dir dist/"
   },
   "repository": {
     "type": "git",

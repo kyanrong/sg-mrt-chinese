@@ -1,13 +1,16 @@
-import express from 'express';
+const express = require('express');
+const path = require('path');
 
 const app = express();
-const port = 3001;
+const port = 3000;
 
-app.get('/', (req, res) => {
-  res.send('The sedulous hyena ate the antelope!');
+app.use(express.static('dist'));
+
+app.get('/*', (req: any, res: { sendFile: (arg0: any) => void; }) => {
+  res.sendFile(path.join(__dirname + '/index.html'));
 });
 
-app.listen(port, err => {
+app.listen(port, (err: any) => {
   if (err) {
     return console.error(err);
   }
