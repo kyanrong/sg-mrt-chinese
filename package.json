@@ -5,7 +5,8 @@
   "main": "src/server.js",
   "scripts": {
     "start": "tsc && node dist/server.js",
-    "build:client": "parcel build src/index.html --out-dir dist/"
+    "build:client": "parcel build src/index.html --out-dir dist/",
+    "work": "concurrently 'tsc --watch' 'nodemon dist/server.js' 'parcel src/index.html --open'"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,8 @@
     "@types/express": "^4.17.2",
     "@types/react": "^16.9.21",
     "@types/react-dom": "^16.9.5",
+    "concurrently": "^5.1.0",
+    "nodemon": "^2.0.2",
     "parcel-bundler": "^1.12.4",
     "tslint": "^6.0.0",
     "typescript": "^3.7.5"

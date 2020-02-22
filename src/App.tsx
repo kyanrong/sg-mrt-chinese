@@ -1,7 +1,7 @@
 import React from 'react';
 
 let App = () => (
-  <div>Hello World!</div>
+  <div>Hot Module Replacement!</div>
 );
 
 export default App;
