@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { Content, Gif, GlobalStyle, Wrapper } from './App.sc';
+import { Caplet, Content, Gif, GlobalStyle, Sign, SignContent, Wrapper } from './App.sc';
+import './assets/font.css';
 
 let App = () => (
   <React.Fragment>
@@ -8,7 +9,13 @@ let App = () => (
     <Wrapper>
       <Content>
         <h1>SG MRTs in Chinese</h1>
-        <Gif src={require('./smrt-train.gif')} />
+        <Sign>
+          <SignContent>
+            <Caplet>EW25</Caplet>
+            Chinese Garden
+          </SignContent>
+        </Sign>
+        <Gif src={require('./assets/smrt-train.gif')} />
       </Content>
     </Wrapper>
   </React.Fragment>
