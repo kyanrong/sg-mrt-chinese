@@ -11,7 +11,14 @@ import { getSelectedStation, getStations } from './selectors';
 import { fetchStations, updateSelectedStation } from './actions';
 import { Content, Gif, GlobalStyle, SearchboxWrapper, Wrapper } from './App.sc';
 
-class App extends Component {
+type AppProps = {
+  fetchStations: Function,
+  updateSelectedStation: Function,
+  stations: object[],
+  selected: object,
+};
+
+class App extends Component<AppProps> {
   componentDidMount() {
     this.props.fetchStations();
   }

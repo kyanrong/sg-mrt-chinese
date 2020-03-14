@@ -4,7 +4,12 @@ import reduce from 'lodash.reduce';
 import sortBy from 'lodash.sortby';
 import { SimpleSelect } from 'react-selectize';
 
-const Searchbox = ({ onSelectStation, options }) => {
+interface IProps {
+  onSelectStation: Function,
+  options: object[],
+}
+
+const Searchbox: React.FC<IProps> = ({ onSelectStation, options }) => {
   if (!options || !options.length) {
     return null;
   }
@@ -34,11 +39,11 @@ const Searchbox = ({ onSelectStation, options }) => {
 
   return (
     <SimpleSelect
-    theme="bootstrap3"
-    options={options}
-    filterOptions={(options, search) => customFilter(options, search)}
-    onValueChange={item => onSelectStation(item)}
-    placeholder="Type to search for a station..." />
+      theme="bootstrap3"
+      options={options}
+      filterOptions={(options, search) => customFilter(options, search)}
+      onValueChange={item => onSelectStation(item)}
+      placeholder="Type to search for a station..." />
   )
 };
 

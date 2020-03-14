@@ -24,7 +24,11 @@ const getColors = code => {
   return stns[match];
 };
 
-const Caplet = ({ code }) => {
+interface IProps {
+  code: string,
+}
+
+const Caplet: React.FC<IProps> = ({ code }) => {
   const values = code.split('-');
 
   switch (values.length) {

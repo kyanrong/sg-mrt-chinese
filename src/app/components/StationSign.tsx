@@ -5,7 +5,12 @@ import Caplet from './Caplet';
 import { Content, Pinyin, Rods, Sign, Wrapper } from './StationSign.sc';
 
 interface IProps {
-  station: any
+  station: {
+    pinyin: string,
+    label: string,
+    label_chinese: string,
+    value: string,
+  }
 };
 
 const StationSign: React.FC<IProps> = ({ station }) => (
