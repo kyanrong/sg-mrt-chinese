@@ -1,34 +1,35 @@
-const csv = require('csv-parser');
 const express = require('express');
 const fs = require('fs');
+const sortBy = require('lodash.sortby');
 const path = require('path');
 
 const app = express();
 const port = 3000;
 
-let data: any[] = [];
-
 app.use(express.static('dist'));
 
+app.get('/stations', (req: any, res: { send: (arg0: any) => void; }) => {
+  const file = fs.readFileSync(path.join(__dirname, '../src/assets/train-station-chinese-names.csv'), 'utf-8');
+  let data = file.split('\n').splice(1);
+  data = data.map((x: string) => {
+    const line = x.split(',');
+    return ({
+      value: line[0],
+      label: line[1],
+      label_chinese: line[2],
+    });
+  });
+  data = sortBy(data, ['label']);
+  res.send(data);
+})
+
 app.get('/*', (req: any, res: { sendFile: (arg0: any) => void; }) => {
-  res.sendFile(path.join(__dirname, '../app/index.html'));
+  res.sendFile(path.join(__dirname + '/index.html'));
 });
 
-app.listen(port, async (err: any) => {
+app.listen(port, (err: any) => {
   if (err) {
     return console.error(err);
   }
-
-  const file = fs.readFileSync(path.join(__dirname, '../src/assets/train-station-chinese-names.csv'), 'utf-8');
-  data = file.split('\n').splice(1);
-  data = data.map(x => {
-    const line = x.split(',');
-    return ({
-      code: line[0],
-      name_eng: line[1],
-      name_chinese: line[2],
-    });
-  });
-
   return console.log(`server is listening on ${port}`);
 });

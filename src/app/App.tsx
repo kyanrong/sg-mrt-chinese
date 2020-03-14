@@ -1,22 +1,53 @@
-import React from 'react';
+import React, { Component } from 'react';
+
+import pinyin from 'chinese-to-pinyin';
+import { connect } from 'react-redux';
 
 import '../assets/font.css';
 
-import { StationSign } from './components';
+import { Searchbox, StationSign } from './components';
+import { getSelectedStation, getStations } from './selectors';
 
-import { Content, Gif, GlobalStyle, Wrapper } from './App.sc';
+import { fetchStations, updateSelectedStation } from './actions';
+import { Content, Gif, GlobalStyle, SearchboxWrapper, Wrapper } from './App.sc';
 
-let App = () => (
-  <React.Fragment>
-    <GlobalStyle />
-    <Wrapper>
-      <Content>
-        <h1>SG MRTs in Chinese</h1>
-        <StationSign></StationSign>
-        <Gif src={require('../assets/smrt-train.gif')} />
-      </Content>
-    </Wrapper>
-  </React.Fragment>
-);
+class App extends Component {
+  componentDidMount() {
+    this.props.fetchStations();
+  }
 
-export default App;
+  render() {
+    const { selected, stations } = this.props;
+    
+    return (
+      <React.Fragment>
+      <GlobalStyle />
+      <Wrapper>
+        <Content>
+          <StationSign station={selected}></StationSign>
+          <h1>SG MRTs w Chinese</h1>
+          <SearchboxWrapper>
+            <Searchbox options={stations} onSelectStation={this.props.updateSelectedStation.bind(this)} />
+          </SearchboxWrapper>
+          <Gif src={require('../assets/smrt-train.gif')} />
+        </Content>
+      </Wrapper>
+    </React.Fragment>
+    );
+  }
+}
+
+export default connect(
+  state => ({
+    selected: getSelectedStation(state),
+    stations: getStations(state),
+  }),
+  dispatch => ({
+    fetchStations: () => dispatch(fetchStations()),
+    updateSelectedStation: stn => {
+      if (stn) {
+        dispatch(updateSelectedStation({ ...stn, pinyin: pinyin(stn.label_chinese)}));
+      }
+    }
+  })
+)(App);

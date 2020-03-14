@@ -1,17 +1,29 @@
 import React from 'react';
 
-import { Caplet, Content, Wrapper } from './StationSign.sc';
+import Caplet from './Caplet';
 
-type StationSignProps = {
+import { Content, Pinyin, Rods, Sign, Wrapper } from './StationSign.sc';
 
+interface IProps {
+  station: any
 };
 
-const StationSign = ({}: StationSignProps) => (
+const StationSign: React.FC<IProps> = ({ station }) => (
   <Wrapper>
-    <Content>
-      <Caplet>EW25</Caplet>
-      Chinese Garden
-    </Content>
+    <Rods />
+    <Sign>
+      <Content>
+        <Caplet code={station.value} />
+        <div>
+          {station.label}
+          <br />
+          {station.label_chinese}
+          <br />
+          <Pinyin>{station.pinyin}</Pinyin>
+        </div>
+        <div></div>
+      </Content>
+    </Sign>
   </Wrapper>
 );
 

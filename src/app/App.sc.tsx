@@ -16,17 +16,23 @@ export const Wrapper = styled.div`
 export const Content = styled.div`
   margin: 60px;
   background-color: #FBFEFE;
-  text-align: center;
   width: 400px;
   height: 600px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
   border-radius: 50px;
-  padding-top: 15px;
 `;
 
 export const Gif = styled.img`
   width: 400px;
   border-radius: 50px;
+`;
+
+export const SearchboxWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
