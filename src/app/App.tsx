@@ -9,7 +9,7 @@ import { Searchbox, StationSign } from './components';
 import { getSelectedStation, getStations } from './selectors';
 
 import { fetchStations, updateSelectedStation } from './actions';
-import { Content, Gif, GlobalStyle, SearchboxWrapper, Wrapper } from './App.sc';
+import { Content, Gif, GlobalStyle, Wrapper } from './App.sc';
 
 type AppProps = {
   fetchStations: Function,
@@ -33,9 +33,7 @@ class App extends Component<AppProps> {
         <Content>
           <StationSign station={selected}></StationSign>
           <h1>SG MRTs w Chinese</h1>
-          <SearchboxWrapper>
-            <Searchbox options={stations} onSelectStation={this.props.updateSelectedStation.bind(this)} />
-          </SearchboxWrapper>
+          <Searchbox options={stations} onSelectStation={this.props.updateSelectedStation.bind(this)} />
           <Gif src={require('../assets/smrt-train.gif')} />
         </Content>
       </Wrapper>

@@ -29,10 +29,3 @@ export const Gif = styled.img`
   width: 400px;
   border-radius: 50px;
 `;
-
-export const SearchboxWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
