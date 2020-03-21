@@ -1,0 +1,1 @@
+{"version":3,"sources":["font.css"],"names":[],"mappings":"AAAA;EACE,yBAAyB;EACzB,iDAAoC;AACtC","file":"main.186cb047.css","sourceRoot":"../src/app","sourcesContent":["@font-face {\r\n  font-family: 'Ocean Sans';\r\n  src: url('./OceanSansStd-XBold.otf');\r\n}"]}

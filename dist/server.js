@@ -4,7 +4,8 @@ const fs = require('fs');
 const sortBy = require('lodash.sortby');
 const path = require('path');
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
+const host = '0.0.0.0';
 app.use(express.static('dist'));
 app.get('/stations', (req, res) => {
     const file = fs.readFileSync(path.join(__dirname, '../src/assets/train-station-chinese-names.csv'), 'utf-8');
@@ -23,7 +24,7 @@ app.get('/stations', (req, res) => {
 app.get('/*', (req, res) => {
     res.sendFile(path.join(__dirname + '/index.html'));
 });
-app.listen(port, (err) => {
+app.listen(port, host, (err) => {
     if (err) {
         return console.error(err);
     }

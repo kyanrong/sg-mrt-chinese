@@ -5,6 +5,7 @@ const path = require('path');
 
 const app = express();
 const port = process.env.PORT || 3000;
+const host = '0.0.0.0';
 
 app.use(express.static('dist'));
 
@@ -27,7 +28,7 @@ app.get('/*', (req: any, res: { sendFile: (arg0: any) => void; }) => {
   res.sendFile(path.join(__dirname + '/index.html'));
 });
 
-app.listen(port, (err: any) => {
+app.listen(port, host, (err: any) => {
   if (err) {
     return console.error(err);
   }
