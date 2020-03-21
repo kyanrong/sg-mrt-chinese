@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/server/server.js",
   "scripts": {
-    "start": "tsc && node dist/server.js",
+    "start": "node dist/server.js",
     "build:client": "parcel build src/app/index.html --out-dir dist/",
     "work": "concurrently 'tsc --watch' 'nodemon dist/server.js' 'parcel src/app/index.html'"
   },
