@@ -1,8 +1,8 @@
 # SG MRT Chinese Names
 
-_WIP_
+A little side project.
 
-A little project to explore Typescript, GitHub Pages, etc.
+[https://sgmrtchinese.herokuapp.com/](https://sgmrtchinese.herokuapp.com/)
 
 ## Resources
 - Typescript Tutorial - https://www.digitalocean.com/community/tutorials/setting-up-a-node-project-with-typescript
